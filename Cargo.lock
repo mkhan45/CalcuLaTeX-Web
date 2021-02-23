@@ -56,7 +56,7 @@ checksum = "ae44d1a3d5a19df61dd0c8beb138458ac2a53a7ac09eba97d55592540004306b"
 [[package]]
 name = "calculatex"
 version = "0.1.0"
-source = "git+https://github.com/mkhan45/CalcuLaTeX#5689c6d8189d547d323d4c9c95c4842ebf0213be"
+source = "git+https://github.com/mkhan45/CalcuLaTeX#52ec8cbe51dbf2215c48dc2af92bf40ccb995bd3"
 dependencies = [
  "bimap",
  "lazy_static",
