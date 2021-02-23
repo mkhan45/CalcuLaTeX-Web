@@ -4,9 +4,8 @@ import("../pkg/index.js").then(calculatex => {
     let generator = new HtmlGenerator({hyphenate: false});
     document.head.appendChild(generator.stylesAndScripts("https://cdn.jsdelivr.net/npm/latex.js@0.12.4/dist/"))
 
-    window.render = () => {
+    window.render = (input) => {
         generator.reset();
-        let input = "\n" + document.getElementById("text_input").value + "\n";
         let latex = calculatex.run_calculatex(input);
 
         if (latex.startsWith("\\document")) {

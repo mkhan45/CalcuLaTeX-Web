@@ -4,14 +4,41 @@
     <meta charset="UTF-8">
     <title>CalcuLaTeX</title>
     <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+
+    <style>
+         h1 {
+             font-family: Sans-Serif;
+         }
+     
+         .header {
+             text-align: center;
+         }
+     
+         .container {
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+             min-height: 75vh;
+         }
+
+         #editor {
+             min-width: 100%;
+             min-height: 100%;
+             font-size: 1.25em;
+         }
+     
+         .container-item {
+             min-width: 42.5vw;
+             min-height: 100%;
+             margin: 1em;
+         }
+     </style>
   </head>
   <body>
-     <script> var render = () => setTimeout(window.render, 500) </script>
      <span class="header"> <h1> CalcuLaTeX </h1> </span>
      <div class="container">
          <div class="container-item">
-             <textarea id="text_input" oninput="render()">
-''' 
+             <div id="editor" oninput="render_textbox()">'''
 CalcuLaTeX:
 
 Write an expression followed by = ? to evaluate it:
@@ -56,44 +83,23 @@ Escape raw latex with three single quotes.
 There's still plenty of bugs, so feel free to \\
 open an issue at \\
 https://github.com/mkhan45/CalcuLaTeX
-'''
-             </textarea>
+'''</div>
          </div>
          <div class="container-item">
              <div id="output"></div>
          </div>
      </div>
      <script src="index.js"></script>
-     <script> render() </script>
-
-     <style>
-         h1 {
-             font-family: Sans-Serif;
-         }
-     
-         .header {
-             text-align: center;
-         }
-     
-         .container {
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: center;
-             min-height: 50vh;
-         }
-     
-         textarea {
-             padding-top: 1em;
-             width: 100%;
-             min-height: 100%;
-             font-size: 1.5em;
-         }
-     
-         .container-item {
-             min-width: 40vw;
-             min-height: 100%;
-             margin: 1em;
-         }
-     </style>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
+     <script> 
+     var editor = ace.edit("editor");
+     editor.session.setMode("ace/mode/text");
+     var render_textbox = () => {
+         console.log(editor);
+         let input = "\n" + editor.getValue() + "\n";
+         render(input);
+     }
+     setTimeout(render_textbox, 500);
+     </script>
   </body>
 </html>
