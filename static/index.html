@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>CalcuLaTeX</title>
     <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
+     <script src="index.js"></script>
 
     <style>
          h1 {
@@ -38,7 +39,7 @@
      <span class="header"> <h1> CalcuLaTeX </h1> </span>
      <div class="container">
          <div class="container-item">
-             <div id="editor" oninput="render_textbox()">'''
+             <div id="editor">'''
 CalcuLaTeX:
 
 Write an expression followed by = ? to evaluate it:
@@ -89,17 +90,29 @@ https://github.com/mkhan45/CalcuLaTeX
              <div id="output"></div>
          </div>
      </div>
-     <script src="index.js"></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
      <script> 
      var editor = ace.edit("editor");
-     editor.session.setMode("ace/mode/text");
+
+     // very strange things happen when it  renders
+     // directly off of editor.on('change')
+     var changed = true;
+
      var render_textbox = () => {
-         console.log(editor);
-         let input = "\n" + editor.getValue() + "\n";
-         render(input);
+         const e = editor.getValue();
+         render("\n" + e + "\n");
      }
-     setTimeout(render_textbox, 500);
+
+     setInterval(() => {
+         if (changed) {
+             render_textbox();
+             change = false;
+         }
+     });
+
+     editor.on('change', () => {
+         changed = true;
+     });
      </script>
   </body>
 </html>
