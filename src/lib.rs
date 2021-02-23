@@ -27,5 +27,8 @@ pub fn main_js() -> Result<(), JsValue> {
 
 #[wasm_bindgen]
 pub fn run_calculatex(input: &str) -> String {
-    calculatex::generate_latex(input)
+    match calculatex::generate_latex(input) {
+        Ok(output) => output,
+        Err(e) => e.to_string(),
+    }
 }

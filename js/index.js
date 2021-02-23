@@ -9,9 +9,13 @@ import("../pkg/index.js").then(calculatex => {
         let input = "\n" + document.getElementById("text_input").value + "\n";
         let latex = calculatex.run_calculatex(input);
 
-        let rendered = parse(latex, {generator: generator}).domFragment();
+        if (latex.startsWith("\\document")) {
+            let rendered = parse(latex, {generator: generator}).domFragment();
 
-        document.getElementById("output").innerHTML = "";
-        document.getElementById("output").appendChild(rendered);
+            document.getElementById("output").innerHTML = "";
+            document.getElementById("output").appendChild(rendered);
+        } else {
+            document.getElementById("output").innerHTML = latex;
+        }
     };
 }).catch(console.error);

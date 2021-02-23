@@ -56,14 +56,13 @@ checksum = "ae44d1a3d5a19df61dd0c8beb138458ac2a53a7ac09eba97d55592540004306b"
 [[package]]
 name = "calculatex"
 version = "0.1.0"
-source = "git+https://github.com/mkhan45/CalcuLaTeX#2a040042a13a5602f9ba088fed5831c56a409b17"
+source = "git+https://github.com/mkhan45/CalcuLaTeX#5689c6d8189d547d323d4c9c95c4842ebf0213be"
 dependencies = [
  "bimap",
  "lazy_static",
  "num",
  "pest",
  "pest_derive",
- "wasm-bindgen",
 ]
 
 [[package]]
