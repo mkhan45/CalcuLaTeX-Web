@@ -1,5 +1,4 @@
 use wasm_bindgen::prelude::*;
-use web_sys::console;
 
 use calculatex;
 
@@ -19,16 +18,10 @@ pub fn main_js() -> Result<(), JsValue> {
     #[cfg(debug_assertions)]
     console_error_panic_hook::set_once();
 
-    // Your code goes here!
-    console::log_1(&JsValue::from_str("Hello world!"));
-
     Ok(())
 }
 
 #[wasm_bindgen]
-pub fn run_calculatex(input: &str) -> String {
-    match calculatex::generate_latex(input) {
-        Ok(output) => output,
-        Err(e) => e.to_string(),
-    }
+pub fn run_calculatex(input: &str) -> Result<String, JsValue> {
+    calculatex::generate_latex(input).map_err(|e| JsValue::from(e.to_string()))
 }

@@ -6,15 +6,15 @@ import("../pkg/index.js").then(calculatex => {
 
     window.render = (input) => {
         generator.reset();
-        let latex = calculatex.run_calculatex(input);
 
-        if (latex.startsWith("\\document")) {
+        try {
+            let latex = calculatex.run_calculatex(input);
             let rendered = parse(latex, {generator: generator}).domFragment();
 
             document.getElementById("output").innerHTML = "";
             document.getElementById("output").appendChild(rendered);
-        } else {
-            document.getElementById("output").innerHTML = latex;
+        } catch (e) {
+            document.getElementById("error").innerHTML = e;
         }
     };
 }).catch(console.error);

@@ -27,6 +27,12 @@
              min-height: 100%;
              font-size: 1.25em;
          }
+
+         #error {
+             color: red;
+             font-family: Sans-Serif;
+             font-size: 1.25em;
+         }
      
          .container-item {
              min-width: 42.5vw;
@@ -87,6 +93,7 @@ https://github.com/mkhan45/CalcuLaTeX
 '''</div>
          </div>
          <div class="container-item">
+             <div id="error"></div>
              <div id="output"></div>
          </div>
      </div>
@@ -94,7 +101,7 @@ https://github.com/mkhan45/CalcuLaTeX
      <script> 
      var editor = ace.edit("editor");
 
-     // very strange things happen when it  renders
+     // very strange things happen when it renders
      // directly off of editor.on('change')
      var changed = true;
 
@@ -108,7 +115,7 @@ https://github.com/mkhan45/CalcuLaTeX
              render_textbox();
              changed = false;
          }
-     });
+     }, 500);
 
      editor.on('change', () => {
          changed = true;
