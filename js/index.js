@@ -11,6 +11,7 @@ import("../pkg/index.js").then(calculatex => {
             let latex = calculatex.run_calculatex(input);
             let rendered = parse(latex, {generator: generator}).domFragment();
 
+            document.getElementById("error").innerHTML = "";
             document.getElementById("output").innerHTML = "";
             document.getElementById("output").appendChild(rendered);
         } catch (e) {
