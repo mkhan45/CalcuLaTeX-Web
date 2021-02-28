@@ -6,7 +6,7 @@ import("../pkg/index.js").then(calculatex => {
 
     window.render = (input) => {
         generator.reset();
-        document.cookie = "last_input = " + escape(input) + ";";
+        document.cookie = "last_input = " + escape(input) + ";" + "SameSite=Lax";
 
         try {
             let latex = calculatex.run_calculatex(input);
