@@ -107,7 +107,7 @@ https://github.com/mkhan45/CalcuLaTeX
          .split('; ')
          .find(row => row.startsWith('last_input'))
          .split('=')[1];
-     if (cookieValue != "" && cookieValue != undefined) {
+     if (cookieValue != undefined) {
          editor.setValue(unescape(cookieValue), 0);
          editor.clearSelection();
      }
@@ -121,12 +121,12 @@ https://github.com/mkhan45/CalcuLaTeX
          render(e + "\n");
      }
 
-     setInterval(() => {
+    setTimeout(() => setInterval(() => {
          if (changed) {
              render_textbox();
              changed = false;
          }
-     }, 300);
+     }, 300), 500);
 
      editor.on('change', () => {
          changed = true;
