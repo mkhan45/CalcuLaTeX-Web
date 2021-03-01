@@ -5,42 +5,6 @@
     <title>CalcuLaTeX</title>
     <meta content="text/html; charset=UTF-8; X-Content-Type-Options=nosniff" http-equiv="Content-Type" />
      <script src="index.js"></script>
-
-    <style>
-         h1 {
-             font-family: Sans-Serif;
-         }
-     
-         .header {
-             text-align: center;
-         }
-     
-         .container {
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: center;
-             min-height: 75vh;
-         }
-
-         #editor {
-             min-width: 100%;
-             min-height: 100%;
-             font-size: 1.25em;
-         }
-
-         #error {
-             color: red;
-             font-family: Sans-Serif;
-             font-size: 1.25em;
-         }
-     
-         .container-item {
-             flex-grow: 2;
-             min-width: 42.5vw;
-             min-height: 100%;
-             margin: 0.5em;
-         }
-     </style>
   </head>
   <body>
      <span class="header"> <h1> CalcuLaTeX </h1> </span>
@@ -98,41 +62,5 @@ https://github.com/mkhan45/CalcuLaTeX
              <div id="output"></div>
          </div>
      </div>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" type="text/javascript" charset="utf-8"></script>
-     <script> 
-
-     var editor = ace.edit("editor");
-
-     try {
-          const cookieValue = document.cookie
-              .split('; ')
-              .find(row => row.startsWith('last_input'))
-              .split('=')[1];
-          if (cookieValue != undefined) {
-              editor.setValue(unescape(cookieValue), 0);
-              editor.clearSelection();
-          }
-     } catch {}
-
-     // very strange things happen when it renders
-     // directly off of editor.on('change')
-     var changed = true;
-
-     let render_textbox = () => {
-         const e = editor.getValue();
-         render(e + "\n");
-     }
-
-    setTimeout(() => setInterval(() => {
-         if (changed) {
-             render_textbox();
-             changed = false;
-         }
-     }, 300), 500);
-
-     editor.on('change', () => {
-         changed = true;
-     });
-     </script>
   </body>
 </html>

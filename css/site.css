@@ -1,0 +1,33 @@
+h1 {
+    font-family: Sans-Serif;
+}
+
+.header {
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-height: 75vh;
+}
+
+#editor {
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 1.25em;
+}
+
+#error {
+    color: red;
+    font-family: Sans-Serif;
+    font-size: 1.25em;
+}
+
+.container-item {
+    flex-grow: 2;
+    width: 42.5vw;
+    height: 90vh;
+    margin: 0.5em;
+}
